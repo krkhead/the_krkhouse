@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0a;
+  --text: #d0d0d0;
+  --grey: #404040;
+  --studio: #6B4C8A;
+  --drive: #8B6F47;
+  --kitchen: #A85C5C;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: -0.3px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* No transitions — raw, static aesthetic */
+* {
+  transition: none !important;
+  animation: none !important;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
+h2 {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+p {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--grey);
+}
+
+/* Image protection — no drag */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Selection color */
+::selection {
+  background: var(--studio);
+  color: var(--text);
+}
