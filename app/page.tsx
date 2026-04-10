@@ -5,104 +5,101 @@ const ROOMS = [
     href: '/drive',
     label: 'The Drive',
     tag: 'Sound',
-    desc: 'Three sonic lanes. Astral, Technical, Sonic.',
     accent: '#8B6F47',
-    border: '5px solid #8B6F47',
+    borderLeft: '5px solid #8B6F47',
   },
   {
     href: '/studio',
     label: 'The Studio',
     tag: 'Art',
-    desc: 'Visual archive. Raw, expressive, unfiltered.',
     accent: '#6B4C8A',
-    border: '5px solid #6B4C8A',
+    borderLeft: '5px solid #6B4C8A',
   },
 ];
 
 export default function Foyer() {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#050505' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#050505', overflowX: 'hidden' }}>
 
-      {/* Header — title bleeds large */}
-      <header style={{ padding: '2rem 1.5rem 0', position: 'relative', overflow: 'hidden' }}>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-start',
-          marginBottom: '0.5rem',
+      {/* ── Top bar ───────────────────────────────────── */}
+      <div style={{
+        padding: '1.25rem 1.5rem 0',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}>
+        <p style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.55rem',
+          letterSpacing: '3px',
+          color: '#303030',
+          textTransform: 'uppercase',
         }}>
-          <p style={{
+          The Krkhouse — Lagos, NG
+        </p>
+        <a
+          href="https://substack.com/@teganora"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="stamp-hover"
+          style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.6rem',
-            letterSpacing: '3px',
+            fontSize: '0.55rem',
+            letterSpacing: '2px',
             color: '#404040',
             textTransform: 'uppercase',
-          }}>
-            Lagos, Nigeria — {new Date().getFullYear()}
-          </p>
-          <a
-            href="https://substack.com/@teganora"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stamp-hover"
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.6rem',
-              letterSpacing: '2px',
-              color: '#404040',
-              textTransform: 'uppercase',
-              border: '1px solid #1f1f1f',
-              padding: '3px 8px',
-            }}
-          >
-            Substack ↗
-          </a>
-        </div>
-
-        {/* Giant brutalist title */}
-        <h1 style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(4rem, 18vw, 13rem)',
-          lineHeight: 0.85,
-          letterSpacing: '-4px',
-          color: '#f0f0f0',
-          textTransform: 'uppercase',
-          marginBottom: '-0.1em',
-        }}>
-          The<br />
-          <span style={{ color: '#e0ff00' }}>Krk</span>house
-        </h1>
-      </header>
-
-      {/* Manifesto bar */}
-      <div style={{
-        borderTop: '3px solid #1a1a1a',
-        borderBottom: '1px solid #111',
-        padding: '0.75rem 1.5rem',
-        marginTop: '1.5rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1rem',
-        overflow: 'hidden',
-      }}>
-        <span style={{
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.6rem',
-          letterSpacing: '4px',
-          color: '#2a2a2a',
-          textTransform: 'uppercase',
-          whiteSpace: 'nowrap',
-        }}>
-          Lagos is loud. So I curate. ·&nbsp; Lagos is loud. So I curate. ·&nbsp; Lagos is loud. So I curate. ·&nbsp;
-          Lagos is loud. So I curate. ·&nbsp; Lagos is loud. So I curate. ·&nbsp;
-        </span>
+            border: '1px solid #1f1f1f',
+            padding: '3px 8px',
+          }}
+        >
+          Substack ↗
+        </a>
       </div>
 
-      {/* Room cards */}
+      {/* ── BLEEDING HEADLINE ─────────────────────────── */}
+      {/* Overflows right edge intentionally — raw, uncontained energy */}
+      <header style={{
+        padding: '1.5rem 1.5rem 0',
+        overflow: 'visible',
+        position: 'relative',
+      }}>
+        <h1 style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(3.5rem, 15vw, 11rem)',
+          lineHeight: 0.85,
+          letterSpacing: '-3px',
+          color: '#f0f0f0',
+          textTransform: 'uppercase',
+          whiteSpace: 'nowrap',         /* lets the text bleed off the right */
+          overflow: 'visible',
+          marginBottom: '0.1em',
+        }}>
+          Lagos Is Loud.<br />
+          <span style={{ color: '#e0ff00' }}>So I Curate.</span>
+        </h1>
+
+        {/* Body copy — sits tight under the headline */}
+        <p style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.7rem',
+          color: '#404040',
+          lineHeight: 1.8,
+          maxWidth: 520,
+          marginTop: '1.5rem',
+          marginBottom: '2.5rem',
+          letterSpacing: '0.3px',
+        }}>
+          This is the Krkhouse. An interface between the chaos of the city and
+          intentional curation. No smooth edges. No polite consumption. A digital vault
+          of sound, raw expressionism, and gut-reaction essays.
+        </p>
+      </header>
+
+      {/* ── Room cards ────────────────────────────────── */}
       <main style={{
-        padding: '1.5rem',
+        padding: '0 1.5rem',
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
         gap: '3px',
         backgroundColor: '#111',
       }}>
@@ -113,91 +110,68 @@ export default function Foyer() {
               style={{
                 backgroundColor: '#050505',
                 padding: '2.5rem 1.5rem',
-                minHeight: 220,
+                minHeight: 200,
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 cursor: 'pointer',
-                borderLeft: room.border,
+                borderLeft: room.borderLeft,
                 borderTop: i % 2 === 0 ? '1px solid #1a1a1a' : '3px solid #1a1a1a',
                 borderRight: '1px solid #0f0f0f',
-                borderBottom: i % 2 === 0 ? '3px solid #1a1a1a' : '1px solid #1a1a1a',
+                borderBottom: i % 2 === 0 ? '3px solid #1a1a1a' : '1px solid #0f0f0f',
                 position: 'relative',
                 overflow: 'hidden',
               }}
             >
               {/* Background scratches */}
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  width: '100%',
-                  height: '100%',
-                  pointerEvents: 'none',
-                  opacity: 0.04,
-                }}
+              <svg aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', opacity: 0.04 }}
               >
                 <path
-                  d={i === 0
-                    ? 'M0,30 L100,70 M0,70 L100,30 M50,0 L48,100'
-                    : 'M10,5 L20,95 M80,5 L75,95 M0,50 L100,52'}
+                  d={i === 0 ? 'M0,30 L100,70 M0,70 L100,30 M50,0 L48,100' : 'M10,5 L20,95 M80,5 L75,95 M0,50 L100,52'}
                   stroke="#f0f0f0" strokeWidth="0.8" fill="none" strokeLinecap="round"
                 />
               </svg>
 
-              <div>
-                <span style={{
-                  display: 'block',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.55rem',
-                  letterSpacing: '5px',
-                  color: room.accent,
-                  textTransform: 'uppercase',
-                  marginBottom: '0.75rem',
-                }}>
-                  {room.tag}
-                </span>
-                <h2 style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(2rem, 6vw, 3.5rem)',
-                  lineHeight: 0.9,
-                  color: '#f0f0f0',
-                  textTransform: 'uppercase',
-                  letterSpacing: '-1px',
-                }}>
-                  {room.label}
-                </h2>
-              </div>
-
-              <p style={{
+              <span style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.65rem',
-                color: '#404040',
-                letterSpacing: '1px',
-                lineHeight: 1.6,
+                fontSize: '0.55rem',
+                letterSpacing: '5px',
+                color: room.accent,
+                textTransform: 'uppercase',
               }}>
-                {room.desc}
-              </p>
+                {room.tag}
+              </span>
+
+              <h2 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+                lineHeight: 0.9,
+                color: '#f0f0f0',
+                textTransform: 'uppercase',
+                letterSpacing: '-1px',
+                marginTop: 'auto',
+                paddingTop: '1rem',
+              }}>
+                {room.label}
+              </h2>
             </div>
           </Link>
         ))}
       </main>
 
-      {/* Footer */}
+      {/* ── Footer ────────────────────────────────────── */}
       <footer style={{
         padding: '1rem 1.5rem',
-        borderTop: '1px solid #111',
+        borderTop: '1px solid #0f0f0f',
         display: 'flex',
         justifyContent: 'space-between',
         marginTop: '3px',
       }}>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#1f1f1f', letterSpacing: '2px' }}>
-          © KRKHOUSE — PERSONAL ARCHIVE
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#1a1a1a', letterSpacing: '2px' }}>
+          © KRKHOUSE
         </span>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#1f1f1f', letterSpacing: '2px' }}>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#1a1a1a', letterSpacing: '2px' }}>
           TWO ROOMS
         </span>
       </footer>

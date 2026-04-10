@@ -1,11 +1,5 @@
 import RoomLayout from '@/app/components/RoomLayout';
 
-/**
- * The Drive — three curated playlist lanes.
- * Uses Spotify's official embed player (no API credentials required).
- * Embeds work on any domain; theme=0 forces dark mode.
- */
-
 const LANES = [
   {
     id: 'astral',
@@ -39,60 +33,92 @@ export default function DrivePage() {
   });
 
   return (
-    <RoomLayout room="drive" label="The Drive" subtitle="Daily sound">
-      {/* Date */}
-      <p
-        style={{
-          fontSize: '0.65rem',
-          letterSpacing: '2px',
-          color: '#303030',
+    <RoomLayout room="drive" label="The Drive" subtitle="Sound">
+
+      {/* ── Bleeding headline ──────────────────────────── */}
+      <div style={{ overflow: 'visible', marginBottom: '0.25rem' }}>
+        <h1 style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(2.5rem, 10vw, 7rem)',
+          lineHeight: 0.85,
+          letterSpacing: '-2px',
+          color: '#f0f0f0',
           textTransform: 'uppercase',
-          marginBottom: '3rem',
-        }}
-      >
+          whiteSpace: 'nowrap',
+          overflow: 'visible',
+          marginLeft: '-2px', /* slight bleed left */
+        }}>
+          Nobody Drives<br />
+          <span style={{ color: '#e0ff00' }}>In Silence</span><br />
+          Anymore.
+        </h1>
+      </div>
+
+      {/* Body copy */}
+      <p style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.68rem',
+        color: '#404040',
+        lineHeight: 1.8,
+        maxWidth: 480,
+        letterSpacing: '0.3px',
+        marginBottom: '0.5rem',
+      }}>
+        Texture to survive the gridlock. The daily rotation of sonic grit,
+        astral dissonance, and underground technicality. Seeded daily. Played loud.
+      </p>
+
+      {/* Date stamp */}
+      <p style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.55rem',
+        letterSpacing: '3px',
+        color: '#2a2a2a',
+        textTransform: 'uppercase',
+        marginBottom: '3rem',
+        borderTop: '1px solid #111',
+        paddingTop: '0.75rem',
+      }}>
         {today}
       </p>
 
-      {/* Three playlist lanes */}
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1px',
-          backgroundColor: '#111',
-        }}
-      >
+      {/* ── Three playlist lanes ───────────────────────── */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', backgroundColor: '#111' }}>
         {LANES.map((lane) => (
           <div
             key={lane.id}
             style={{
-              backgroundColor: '#0a0a0a',
+              backgroundColor: '#050505',
               padding: '1.5rem',
               display: 'flex',
               flexDirection: 'column',
               gap: '1rem',
+              borderLeft: `4px solid ${lane.accent}`,
             }}
           >
-            {/* Lane header */}
             <div>
-              <span
-                style={{
-                  display: 'block',
-                  fontSize: '0.6rem',
-                  letterSpacing: '3px',
-                  color: lane.accent,
-                  textTransform: 'uppercase',
-                  marginBottom: '0.4rem',
-                }}
-              >
+              <span style={{
+                display: 'block',
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(1.2rem, 3vw, 2rem)',
+                letterSpacing: '-0.5px',
+                color: lane.accent,
+                textTransform: 'uppercase',
+                lineHeight: 0.9,
+                marginBottom: '0.35rem',
+              }}>
                 {lane.label}
               </span>
-              <p style={{ fontSize: '0.6rem', color: '#2a2a2a', letterSpacing: '0.5px' }}>
+              <p style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.58rem',
+                color: '#2a2a2a',
+                letterSpacing: '1px',
+              }}>
                 {lane.desc}
               </p>
             </div>
 
-            {/* Spotify embed — official embed endpoint, dark theme */}
             <iframe
               src={`https://open.spotify.com/embed/playlist/${lane.playlistId}?utm_source=generator&theme=0`}
               width="100%"
@@ -108,16 +134,15 @@ export default function DrivePage() {
       </div>
 
       {/* Footer note */}
-      <p
-        style={{
-          fontSize: '0.6rem',
-          color: '#1f1f1f',
-          letterSpacing: '1px',
-          textTransform: 'uppercase',
-          marginTop: '3rem',
-        }}
-      >
-        Curated selections
+      <p style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.55rem',
+        color: '#1a1a1a',
+        letterSpacing: '2px',
+        textTransform: 'uppercase',
+        marginTop: '3rem',
+      }}>
+        Played loud.
       </p>
     </RoomLayout>
   );
