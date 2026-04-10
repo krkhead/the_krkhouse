@@ -4,167 +4,181 @@ const ROOMS = [
   {
     href: '/drive',
     label: 'The Drive',
-    tag: 'SOUND',
-    desc: 'Three sonic lanes. Astral, Technical, Sonic. Daily curation.',
+    tag: 'Sound',
+    desc: 'Three sonic lanes. Astral, Technical, Sonic.',
     accent: '#8B6F47',
+    border: '5px solid #8B6F47',
   },
   {
     href: '/studio',
     label: 'The Studio',
-    tag: 'ART',
+    tag: 'Art',
     desc: 'Visual archive. Raw, expressive, unfiltered.',
     accent: '#6B4C8A',
+    border: '5px solid #6B4C8A',
   },
 ];
 
 export default function Foyer() {
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        backgroundColor: '#0a0a0a',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      {/* Header */}
-      <header
-        style={{
-          padding: '1.5rem',
-          borderBottom: '1px solid #1a1a1a',
+    <div style={{ minHeight: '100vh', backgroundColor: '#050505' }}>
+
+      {/* Header — title bleeds large */}
+      <header style={{ padding: '2rem 1.5rem 0', position: 'relative', overflow: 'hidden' }}>
+        <div style={{
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'flex-end',
-        }}
-      >
-        <div>
-          <p
+          alignItems: 'flex-start',
+          marginBottom: '0.5rem',
+        }}>
+          <p style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.6rem',
+            letterSpacing: '3px',
+            color: '#404040',
+            textTransform: 'uppercase',
+          }}>
+            Lagos, Nigeria — {new Date().getFullYear()}
+          </p>
+          <a
+            href="https://substack.com/@teganora"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stamp-hover"
             style={{
-              fontSize: '0.65rem',
-              letterSpacing: '3px',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.6rem',
+              letterSpacing: '2px',
               color: '#404040',
               textTransform: 'uppercase',
-              marginBottom: '0.25rem',
+              border: '1px solid #1f1f1f',
+              padding: '3px 8px',
             }}
           >
-            Lagos, Nigeria
-          </p>
-          <h1
-            style={{
-              fontSize: 'clamp(2.5rem, 8vw, 5rem)',
-              fontWeight: 900,
-              letterSpacing: '-4px',
-              textTransform: 'uppercase',
-              color: '#d0d0d0',
-              lineHeight: 0.9,
-              fontFamily: '"Courier New", monospace',
-            }}
-          >
-            The<br />Krkhouse
-          </h1>
+            Substack ↗
+          </a>
         </div>
-        <a
-          href={process.env.NEXT_PUBLIC_SUBSTACK_URL ?? 'https://substack.com/@teganora'}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            fontSize: '0.65rem',
-            letterSpacing: '2px',
-            color: '#404040',
-            textDecoration: 'none',
-            textTransform: 'uppercase',
-            alignSelf: 'flex-start',
-            marginTop: '0.5rem',
-          }}
-        >
-          Substack ↗
-        </a>
+
+        {/* Giant brutalist title */}
+        <h1 style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(4rem, 18vw, 13rem)',
+          lineHeight: 0.85,
+          letterSpacing: '-4px',
+          color: '#f0f0f0',
+          textTransform: 'uppercase',
+          marginBottom: '-0.1em',
+        }}>
+          The<br />
+          <span style={{ color: '#e0ff00' }}>Krk</span>house
+        </h1>
       </header>
 
-      {/* Manifesto line */}
-      <div
-        style={{
-          padding: '1.5rem',
-          borderBottom: '1px solid #1a1a1a',
-        }}
-      >
-        <p
-          style={{
-            fontSize: '0.75rem',
-            letterSpacing: '1px',
-            color: '#303030',
-            textTransform: 'uppercase',
-            fontFamily: '"Courier New", monospace',
-          }}
-        >
-          Lagos is loud. So I curate.
-        </p>
+      {/* Manifesto bar */}
+      <div style={{
+        borderTop: '3px solid #1a1a1a',
+        borderBottom: '1px solid #111',
+        padding: '0.75rem 1.5rem',
+        marginTop: '1.5rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1rem',
+        overflow: 'hidden',
+      }}>
+        <span style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.6rem',
+          letterSpacing: '4px',
+          color: '#2a2a2a',
+          textTransform: 'uppercase',
+          whiteSpace: 'nowrap',
+        }}>
+          Lagos is loud. So I curate. ·&nbsp; Lagos is loud. So I curate. ·&nbsp; Lagos is loud. So I curate. ·&nbsp;
+          Lagos is loud. So I curate. ·&nbsp; Lagos is loud. So I curate. ·&nbsp;
+        </span>
       </div>
 
       {/* Room cards */}
-      <main
-        style={{
-          flex: 1,
-          padding: '1.5rem',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '1px',
-          backgroundColor: '#1a1a1a',
-          alignContent: 'start',
-        }}
-      >
-        {ROOMS.map((room) => (
-          <Link
-            key={room.href}
-            href={room.href}
-            style={{ textDecoration: 'none' }}
-          >
+      <main style={{
+        padding: '1.5rem',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '3px',
+        backgroundColor: '#111',
+      }}>
+        {ROOMS.map((room, i) => (
+          <Link key={room.href} href={room.href} style={{ textDecoration: 'none', display: 'block' }}>
             <div
+              className="glitch-hover"
               style={{
-                backgroundColor: '#0a0a0a',
-                padding: '2rem 1.5rem',
-                minHeight: '200px',
+                backgroundColor: '#050505',
+                padding: '2.5rem 1.5rem',
+                minHeight: 220,
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 cursor: 'pointer',
+                borderLeft: room.border,
+                borderTop: i % 2 === 0 ? '1px solid #1a1a1a' : '3px solid #1a1a1a',
+                borderRight: '1px solid #0f0f0f',
+                borderBottom: i % 2 === 0 ? '3px solid #1a1a1a' : '1px solid #1a1a1a',
+                position: 'relative',
+                overflow: 'hidden',
               }}
             >
+              {/* Background scratches */}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  pointerEvents: 'none',
+                  opacity: 0.04,
+                }}
+              >
+                <path
+                  d={i === 0
+                    ? 'M0,30 L100,70 M0,70 L100,30 M50,0 L48,100'
+                    : 'M10,5 L20,95 M80,5 L75,95 M0,50 L100,52'}
+                  stroke="#f0f0f0" strokeWidth="0.8" fill="none" strokeLinecap="round"
+                />
+              </svg>
+
               <div>
-                <span
-                  style={{
-                    fontSize: '0.6rem',
-                    letterSpacing: '3px',
-                    color: room.accent,
-                    textTransform: 'uppercase',
-                    display: 'block',
-                    marginBottom: '0.75rem',
-                  }}
-                >
+                <span style={{
+                  display: 'block',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.55rem',
+                  letterSpacing: '5px',
+                  color: room.accent,
+                  textTransform: 'uppercase',
+                  marginBottom: '0.75rem',
+                }}>
                   {room.tag}
                 </span>
-                <h2
-                  style={{
-                    fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-                    fontWeight: 900,
-                    letterSpacing: '-2px',
-                    textTransform: 'uppercase',
-                    color: '#d0d0d0',
-                    lineHeight: 1,
-                    fontFamily: '"Courier New", monospace',
-                  }}
-                >
+                <h2 style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+                  lineHeight: 0.9,
+                  color: '#f0f0f0',
+                  textTransform: 'uppercase',
+                  letterSpacing: '-1px',
+                }}>
                   {room.label}
                 </h2>
               </div>
-              <p
-                style={{
-                  fontSize: '0.75rem',
-                  color: '#404040',
-                  lineHeight: 1.6,
-                  marginTop: '1rem',
-                }}
-              >
+
+              <p style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.65rem',
+                color: '#404040',
+                letterSpacing: '1px',
+                lineHeight: 1.6,
+              }}>
                 {room.desc}
               </p>
             </div>
@@ -173,19 +187,18 @@ export default function Foyer() {
       </main>
 
       {/* Footer */}
-      <footer
-        style={{
-          padding: '1rem 1.5rem',
-          borderTop: '1px solid #1a1a1a',
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
-        <span style={{ fontSize: '0.6rem', color: '#222', letterSpacing: '1px' }}>
+      <footer style={{
+        padding: '1rem 1.5rem',
+        borderTop: '1px solid #111',
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginTop: '3px',
+      }}>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#1f1f1f', letterSpacing: '2px' }}>
           © KRKHOUSE — PERSONAL ARCHIVE
         </span>
-        <span style={{ fontSize: '0.6rem', color: '#222', letterSpacing: '1px' }}>
-          THREE ROOMS
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#1f1f1f', letterSpacing: '2px' }}>
+          TWO ROOMS
         </span>
       </footer>
     </div>

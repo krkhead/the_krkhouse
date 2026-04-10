@@ -3,13 +3,12 @@
 import Link from 'next/link';
 
 const ROOM_ACCENTS: Record<string, string> = {
-  drive: '#8B6F47',
-  kitchen: '#A85C5C',
+  drive:  '#8B6F47',
   studio: '#6B4C8A',
 };
 
 interface RoomLayoutProps {
-  room: 'drive' | 'kitchen' | 'studio';
+  room: 'drive' | 'studio';
   label: string;
   subtitle?: string;
   children: React.ReactNode;
@@ -20,59 +19,63 @@ export default function RoomLayout({ room, label, subtitle, children, actions }:
   const accent = ROOM_ACCENTS[room];
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#0a0a0a' }}>
-      {/* Header */}
-      <header
-        style={{
-          borderBottom: `1px solid #222`,
-          padding: '1.25rem 1.5rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          position: 'sticky',
-          top: 0,
-          backgroundColor: '#0a0a0a',
-          zIndex: 50,
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#050505' }}>
+
+      {/* ── Header ─────────────────────────────────────── */}
+      <header style={{
+        borderBottom: '3px solid #111',
+        borderLeft: `6px solid ${accent}`,
+        padding: '1rem 1.5rem',
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'space-between',
+        position: 'sticky',
+        top: 0,
+        backgroundColor: '#050505',
+        zIndex: 50,
+        gap: '1rem',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '1.5rem' }}>
           <Link
             href="/"
+            className="stamp-hover"
             style={{
-              fontSize: '0.7rem',
-              letterSpacing: '2px',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.6rem',
+              letterSpacing: '3px',
               textTransform: 'uppercase',
-              color: '#404040',
+              color: '#303030',
               textDecoration: 'none',
+              paddingBottom: '2px',
             }}
           >
-            ← KRKHOUSE
+            ← KRK
           </Link>
+
+          {/* Room name — brutalist header, bleeds into the space */}
           <div>
-            <h2
-              style={{
-                fontSize: '0.85rem',
-                fontWeight: 700,
-                letterSpacing: '3px',
-                textTransform: 'uppercase',
-                color: accent,
-                lineHeight: 1,
-              }}
-            >
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.8rem, 5vw, 3.5rem)',
+              lineHeight: 0.88,
+              letterSpacing: '-1px',
+              textTransform: 'uppercase',
+              color: '#f0f0f0',
+            }}>
               {label}
             </h2>
             {subtitle && (
-              <p
-                style={{
-                  fontSize: '0.65rem',
-                  letterSpacing: '1px',
-                  color: '#404040',
-                  marginTop: '2px',
-                  textTransform: 'uppercase',
-                }}
-              >
+              <span style={{
+                display: 'block',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.55rem',
+                letterSpacing: '3px',
+                color: accent,
+                textTransform: 'uppercase',
+                marginTop: '3px',
+              }}>
                 {subtitle}
-              </p>
+              </span>
             )}
           </div>
         </div>
@@ -80,29 +83,33 @@ export default function RoomLayout({ room, label, subtitle, children, actions }:
         {actions && <div>{actions}</div>}
       </header>
 
-      {/* Content */}
+      {/* ── Content ────────────────────────────────────── */}
       <main style={{ padding: '1.5rem' }}>{children}</main>
 
-      {/* Footer */}
-      <footer
-        style={{
-          borderTop: '1px solid #1a1a1a',
-          padding: '1rem 1.5rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginTop: '4rem',
-        }}
-      >
-        <span style={{ fontSize: '0.65rem', color: '#2a2a2a', letterSpacing: '1px' }}>
+      {/* ── Footer ─────────────────────────────────────── */}
+      <footer style={{
+        borderTop: '1px solid #0f0f0f',
+        padding: '1rem 1.5rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: '4rem',
+      }}>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#1a1a1a', letterSpacing: '2px' }}>
           © KRKHOUSE
         </span>
         <a
-          href={process.env.NEXT_PUBLIC_SUBSTACK_URL ?? 'https://substack.com/@teganora'}
+          href="https://substack.com/@teganora"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: '#404040', fontSize: '0.65rem', letterSpacing: '1px', textDecoration: 'none' }}
-          title="Substack"
+          className="stamp-hover"
+          style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.55rem',
+            color: '#303030',
+            letterSpacing: '2px',
+            textDecoration: 'none',
+          }}
         >
           SUBSTACK ↗
         </a>
