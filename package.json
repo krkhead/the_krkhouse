@@ -9,9 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "migrate": "ts-node --project tsconfig.scripts.json scripts/migrate.ts",
-    "seed:all": "npm run seed:artworks && npm run seed:essays",
-    "seed:artworks": "ts-node --project tsconfig.scripts.json scripts/seed-artworks.ts",
-    "seed:essays": "ts-node --project tsconfig.scripts.json scripts/seed-essays.ts"
+    "seed:artworks": "ts-node --project tsconfig.scripts.json scripts/seed-artworks.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.0",

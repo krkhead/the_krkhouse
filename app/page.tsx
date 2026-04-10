@@ -9,13 +9,6 @@ const ROOMS = [
     accent: '#8B6F47',
   },
   {
-    href: '/kitchen',
-    label: 'The Kitchen',
-    tag: 'CULINARY',
-    desc: 'Fusion explorations. Nigerian ingredients, global technique.',
-    accent: '#A85C5C',
-  },
-  {
     href: '/studio',
     label: 'The Studio',
     tag: 'ART',

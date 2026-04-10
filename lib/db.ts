@@ -1,5 +1,5 @@
 import { neon } from '@neondatabase/serverless';
-import type { Artwork, Essay, DailyPicks } from './types';
+import type { Artwork, DailyPicks } from './types';
 
 const sql = neon(process.env.DATABASE_URL!);
 
@@ -84,29 +84,4 @@ export async function saveMusicPicks(picks: DailyPicks): Promise<void> {
     )
     ON CONFLICT (pick_date) DO NOTHING
   `;
-}
-
-// --- Kitchen Essays ---
-
-export async function getEssays(): Promise<Essay[]> {
-  const rows = await sql`
-    SELECT * FROM kitchen_essays
-    WHERE published_at IS NOT NULL
-    ORDER BY published_at DESC
-  `;
-  return rows as Essay[];
-}
-
-export async function getEssayBySlug(slug: string): Promise<Essay | null> {
-  const rows = await sql`SELECT * FROM kitchen_essays WHERE slug = ${slug}` as Essay[];
-  return rows[0] ?? null;
-}
-
-export async function insertEssay(data: Omit<Essay, 'id' | 'created_at'>): Promise<Essay> {
-  const rows = await sql`
-    INSERT INTO kitchen_essays (slug, title, content, featured_image_url, excerpt, published_at)
-    VALUES (${data.slug}, ${data.title}, ${data.content}, ${data.featured_image_url}, ${data.excerpt}, ${data.published_at})
-    RETURNING *
-  ` as Essay[];
-  return rows[0];
 }

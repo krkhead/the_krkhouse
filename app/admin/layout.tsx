@@ -63,7 +63,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </Link>
           <nav style={{ display: 'flex', gap: '1.5rem' }}>
             {tab('/admin/studio', 'Studio')}
-            {tab('/admin/kitchen', 'Kitchen')}
           </nav>
         </div>
 

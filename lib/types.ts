@@ -4,7 +4,7 @@ export interface Artwork {
   uuid: string;
   filename: string;
   blob_url: string;
-  room: 'studio' | 'kitchen' | 'drive';
+  room: 'studio' | 'drive';
   sort_order: number;
   created_at: string;
 }
@@ -25,18 +25,6 @@ export interface DailyPicks {
   astral: SpotifyTrack;
   technical: SpotifyTrack;
   sonic: SpotifyTrack;
-}
-
-// Kitchen essay
-export interface Essay {
-  id: number;
-  slug: string;
-  title: string;
-  content: string;
-  featured_image_url: string | null;
-  excerpt: string | null;
-  published_at: string | null;
-  created_at: string;
 }
 
 // API responses
