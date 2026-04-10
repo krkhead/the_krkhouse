@@ -89,11 +89,12 @@ export async function saveMusicPicks(picks: DailyPicks): Promise<void> {
 // --- Kitchen Essays ---
 
 export async function getEssays(): Promise<Essay[]> {
-  return sql`
+  const rows = await sql`
     SELECT * FROM kitchen_essays
     WHERE published_at IS NOT NULL
     ORDER BY published_at DESC
-  ` as Promise<Essay[]>;
+  `;
+  return rows as Essay[];
 }
 
 export async function getEssayBySlug(slug: string): Promise<Essay | null> {

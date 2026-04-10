@@ -30,7 +30,7 @@ async function main() {
 
   if (ESSAYS.length === 0) {
     console.log('No essays to seed. Add them to the ESSAYS array in this script.');
-    await sql.end();
+    
     return;
   }
 
@@ -57,7 +57,7 @@ async function main() {
   }
 
   console.log(`\nDone. Seeded ${seeded} essays.`);
-  await sql.end();
+  
 }
 
 main().catch((err) => {

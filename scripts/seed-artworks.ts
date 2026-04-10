@@ -79,7 +79,7 @@ async function main() {
   }
 
   console.log(`\nDone. Seeded: ${seeded}, Skipped (already exist): ${skipped}`);
-  await sql.end();
+  
 }
 
 main().catch((err) => {
