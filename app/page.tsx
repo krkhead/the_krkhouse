@@ -78,16 +78,19 @@ export default function Foyer() {
           <span style={{ color: '#e0ff00' }}>So I Curate.</span>
         </h1>
 
-        {/* Body copy — sits tight under the headline */}
+        {/* Body copy — acid yellow box */}
         <p style={{
           fontFamily: 'var(--font-mono)',
           fontSize: '0.7rem',
-          color: '#404040',
+          color: '#050505',
           lineHeight: 1.8,
           maxWidth: 520,
           marginTop: '1.5rem',
           marginBottom: '2.5rem',
           letterSpacing: '0.3px',
+          backgroundColor: '#e0ff00',
+          padding: '0.75rem 1rem',
+          display: 'inline-block',
         }}>
           This is the Krkhouse. An interface between the chaos of the city and
           intentional curation. No smooth edges. No polite consumption. A digital vault

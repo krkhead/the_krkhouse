@@ -34,11 +34,14 @@ export default async function StudioPage() {
       <p style={{
         fontFamily: 'var(--font-mono)',
         fontSize: '0.68rem',
-        color: '#404040',
+        color: '#050505',
         lineHeight: 1.8,
         maxWidth: 420,
         letterSpacing: '0.3px',
         marginBottom: '0.5rem',
+        backgroundColor: '#e0ff00',
+        padding: '0.75rem 1rem',
+        display: 'inline-block',
       }}>
         Frantic linework and high-contrast expressionism.
         The ugly-cool archive. {total > 0 ? `${total}+` : '202+'} artifacts.

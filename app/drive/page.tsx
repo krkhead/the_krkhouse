@@ -88,15 +88,18 @@ export default function DrivePage() {
         </h1>
       </div>
 
-      {/* Body copy */}
+      {/* Body copy — acid yellow box */}
       <p style={{
         fontFamily: 'var(--font-mono)',
         fontSize: '0.68rem',
-        color: '#888888',
+        color: '#050505',
         lineHeight: 1.8,
         maxWidth: 480,
         letterSpacing: '0.3px',
         marginBottom: '0.5rem',
+        backgroundColor: '#e0ff00',
+        padding: '0.75rem 1rem',
+        display: 'inline-block',
       }}>
         Texture to survive the gridlock. The daily rotation of sonic grit,
         astral dissonance, and underground technicality. Seeded daily. Played loud.
