@@ -7,8 +7,8 @@
 :root {
   --bg: #050505;
   --text: #f0f0f0;
-  --grey: #404040;
-  --dim: #2a2a2a;
+  --grey: #707070;
+  --dim: #555555;
   --studio: #6B4C8A;
   --drive: #8B6F47;
   --acid: #e0ff00;
@@ -66,7 +66,7 @@ h3 {
 p {
   font-family: var(--font-body);
   font-size: 0.85rem;
-  color: #909090;
+  color: #b0b0b0;
   line-height: 1.7;
 }
 

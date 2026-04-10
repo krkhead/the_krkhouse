@@ -1,6 +1,10 @@
+'use client';
+
+import { useMemo } from 'react';
 import RoomLayout from '@/app/components/RoomLayout';
 
-const LANES = [
+// All available playlist lanes — add more here as needed
+const ALL_LANES = [
   {
     id: 'astral',
     playlistId: '4sssNLoBjV0SvDQ8ClK25V',
@@ -24,6 +28,30 @@ const LANES = [
   },
 ] as const;
 
+// How many lanes to show at once
+const LANES_TO_SHOW = 3;
+
+/**
+ * Seeded shuffle — deterministic per day so all visitors see the same order,
+ * but the order rotates every day. Uses a simple LCG seeded by the date string.
+ */
+function seededShuffle<T>(arr: T[], seed: number): T[] {
+  const out = [...arr];
+  let s = seed;
+  for (let i = out.length - 1; i > 0; i--) {
+    s = (s * 1664525 + 1013904223) & 0xffffffff;
+    const j = Math.abs(s) % (i + 1);
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+function dateSeed(): number {
+  const d = new Date();
+  // e.g. 20260410 — changes daily
+  return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+}
+
 export default function DrivePage() {
   const today = new Date().toLocaleDateString('en-GB', {
     weekday: 'long',
@@ -31,6 +59,12 @@ export default function DrivePage() {
     month: 'long',
     year: 'numeric',
   });
+
+  // Shuffle once per render; stable within the same day
+  const lanes = useMemo(
+    () => seededShuffle([...ALL_LANES], dateSeed()).slice(0, LANES_TO_SHOW),
+    []
+  );
 
   return (
     <RoomLayout room="drive" label="The Drive" subtitle="Sound">
@@ -46,7 +80,7 @@ export default function DrivePage() {
           textTransform: 'uppercase',
           whiteSpace: 'nowrap',
           overflow: 'visible',
-          marginLeft: '-2px', /* slight bleed left */
+          marginLeft: '-2px',
         }}>
           Nobody Drives<br />
           <span style={{ color: '#e0ff00' }}>In Silence</span><br />
@@ -58,7 +92,7 @@ export default function DrivePage() {
       <p style={{
         fontFamily: 'var(--font-mono)',
         fontSize: '0.68rem',
-        color: '#404040',
+        color: '#888888',
         lineHeight: 1.8,
         maxWidth: 480,
         letterSpacing: '0.3px',
@@ -73,18 +107,18 @@ export default function DrivePage() {
         fontFamily: 'var(--font-mono)',
         fontSize: '0.55rem',
         letterSpacing: '3px',
-        color: '#2a2a2a',
+        color: '#888888',
         textTransform: 'uppercase',
         marginBottom: '3rem',
-        borderTop: '1px solid #111',
+        borderTop: '1px solid #1a1a1a',
         paddingTop: '0.75rem',
       }}>
         {today}
       </p>
 
-      {/* ── Three playlist lanes ───────────────────────── */}
+      {/* ── Shuffled playlist lanes ────────────────────── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', backgroundColor: '#111' }}>
-        {LANES.map((lane) => (
+        {lanes.map((lane) => (
           <div
             key={lane.id}
             style={{
@@ -112,7 +146,7 @@ export default function DrivePage() {
               <p style={{
                 fontFamily: 'var(--font-mono)',
                 fontSize: '0.58rem',
-                color: '#2a2a2a',
+                color: '#888888',
                 letterSpacing: '1px',
               }}>
                 {lane.desc}
@@ -133,11 +167,10 @@ export default function DrivePage() {
         ))}
       </div>
 
-      {/* Footer note */}
       <p style={{
         fontFamily: 'var(--font-mono)',
         fontSize: '0.55rem',
-        color: '#1a1a1a',
+        color: '#606060',
         letterSpacing: '2px',
         textTransform: 'uppercase',
         marginTop: '3rem',

@@ -50,7 +50,7 @@ export default async function StudioPage() {
         fontFamily: 'var(--font-mono)',
         fontSize: '0.55rem',
         letterSpacing: '3px',
-        color: '#2a2a2a',
+        color: '#888888',
         textTransform: 'uppercase',
         marginBottom: '3rem',
         borderTop: '1px solid #111',
@@ -64,7 +64,7 @@ export default async function StudioPage() {
         <p style={{
           fontFamily: 'var(--font-mono)',
           fontSize: '0.7rem',
-          color: '#2a2a2a',
+          color: '#888888',
           letterSpacing: '3px',
           textTransform: 'uppercase',
           padding: '4rem 0',

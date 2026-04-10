@@ -44,7 +44,7 @@ export default function RoomLayout({ room, label, subtitle, children, actions }:
               fontSize: '0.6rem',
               letterSpacing: '3px',
               textTransform: 'uppercase',
-              color: '#303030',
+              color: '#888888',
               textDecoration: 'none',
               paddingBottom: '2px',
             }}
@@ -95,7 +95,7 @@ export default function RoomLayout({ room, label, subtitle, children, actions }:
         alignItems: 'center',
         marginTop: '4rem',
       }}>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#1a1a1a', letterSpacing: '2px' }}>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#555555', letterSpacing: '2px' }}>
           © KRKHOUSE
         </span>
         <a
@@ -106,7 +106,7 @@ export default function RoomLayout({ room, label, subtitle, children, actions }:
           style={{
             fontFamily: 'var(--font-mono)',
             fontSize: '0.55rem',
-            color: '#303030',
+            color: '#888888',
             letterSpacing: '2px',
             textDecoration: 'none',
           }}

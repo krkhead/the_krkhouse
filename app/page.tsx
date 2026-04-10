@@ -32,7 +32,7 @@ export default function Foyer() {
           fontFamily: 'var(--font-mono)',
           fontSize: '0.55rem',
           letterSpacing: '3px',
-          color: '#303030',
+          color: '#888888',
           textTransform: 'uppercase',
         }}>
           The Krkhouse — Lagos, NG
@@ -168,10 +168,10 @@ export default function Foyer() {
         justifyContent: 'space-between',
         marginTop: '3px',
       }}>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#1a1a1a', letterSpacing: '2px' }}>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#555555', letterSpacing: '2px' }}>
           © KRKHOUSE
         </span>
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#1a1a1a', letterSpacing: '2px' }}>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', color: '#555555', letterSpacing: '2px' }}>
           TWO ROOMS
         </span>
       </footer>
