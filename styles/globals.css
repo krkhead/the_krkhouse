@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design One: Frantic Expressionist ─────────────────────────────────── */
+
+:root {
+  --bg: #050505;
+  --text: #f0f0f0;
+  --grey: #707070;
+  --dim: #555555;
+  --studio: #6B4C8A;
+  --drive: #8B6F47;
+  --acid: #e0ff00;
+  --font-mono: 'Courier New', Courier, monospace;
+  --font-display: Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
+  --font-body: Inter, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* Transitions OFF — raw, no-smooth aesthetic */
+  transition: none !important;
+}
+
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 14vw, 9rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  line-height: 0.88;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+
+h3 {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+p {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #b0b0b0;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* ─── Glitch Animation ───────────────────────────────────────────────────── */
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0) skewX(0deg); }
+  20%       { transform: translate(-3px, 2px) skewX(0.5deg); }
+  40%       { transform: translate(-2px, -2px) skewX(-0.4deg); }
+  60%       { transform: translate(3px, 2px) skewX(0.3deg); }
+  80%       { transform: translate(2px, -3px) skewX(-0.5deg); }
+}
+
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.18s cubic-bezier(.25,.46,.45,.94) both infinite;
+}
+
+/* Stamp inversion — zero delay, harsh */
+.stamp-hover:hover {
+  filter: invert(1);
+}
+
+/* ─── Masonry Grid ───────────────────────────────────────────────────────── */
+
+.masonry-grid {
+  columns: 2;
+  column-gap: 3px;
+}
+
+@media (min-width: 600px)  { .masonry-grid { columns: 3; } }
+@media (min-width: 900px)  { .masonry-grid { columns: 4; } }
+@media (min-width: 1200px) { .masonry-grid { columns: 5; } }
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 3px;
+  display: block;
+  position: relative;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #333; }
+
+/* ─── Image Protection ───────────────────────────────────────────────────── */
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+::selection {
+  background: var(--acid);
+  color: #050505;
+}

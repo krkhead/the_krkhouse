@@ -8,34 +8,33 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "ts-node scripts/migrate.ts",
-    "seed:all": "npm run seed:artworks && npm run seed:essays && npm run seed:playlists",
-    "seed:artworks": "ts-node scripts/seed-artworks.ts",
-    "seed:essays": "ts-node scripts/seed-essays.ts",
-    "seed:playlists": "ts-node scripts/seed-playlists.ts"
+    "migrate": "ts-node --project tsconfig.scripts.json scripts/migrate.ts",
+    "seed:artworks": "ts-node --project tsconfig.scripts.json scripts/seed-artworks.ts"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.10.0",
+    "@vercel/blob": "^0.24.0",
+    "autoprefixer": "^10.4.0",
+    "clsx": "^2.0.0",
     "next": "^16.2.1",
+    "postcss": "^8.4.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "@vercel/blob": "^0.24.0",
-    "@vercel/neon": "^0.0.20",
-    "postgres": "^3.4.0",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.0",
-    "tailwindcss": "^4.0.0",
-    "clsx": "^2.0.0",
+    "rehype-react": "^8.0.0",
     "remark": "^15.0.0",
     "remark-html": "^16.0.0",
-    "rehype-react": "^8.0.0"
+    "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.3.0",
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/dotenv": "^6.1.1",
     "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "ts-node": "^10.9.0",
+    "dotenv": "^17.4.1",
     "eslint": "^9.0.0",
-    "eslint-config-next": "^16.2.1"
+    "eslint-config-next": "^16.2.1",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.3.0"
   }
 }
