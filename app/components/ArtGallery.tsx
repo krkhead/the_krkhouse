@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import type { Artwork } from '@/lib/types';
 
 interface ArtGalleryProps {
@@ -104,13 +105,15 @@ export default function ArtGallery({ artworks, total }: ArtGalleryProps) {
                   width: '100%',
                 }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={art.blob_url}
                   alt=""
-                  loading="lazy"
+                  width={800}
+                  height={800}
+                  priority={idx < 4}
                   draggable={false}
                   onContextMenu={(e) => e.preventDefault()}
+                  sizes="(max-width: 600px) 50vw, (max-width: 900px) 33vw, (max-width: 1200px) 25vw, 20vw"
                   style={{
                     width: '100%',
                     height: 'auto',
@@ -199,15 +202,21 @@ export default function ArtGallery({ artworks, total }: ArtGalleryProps) {
               borderLeft: '4px solid #e0ff00',
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={current.blob_url}
               alt=""
+              width={1600}
+              height={1600}
+              priority
+              quality={90}
               draggable={false}
               onContextMenu={(e) => e.preventDefault()}
+              sizes="90vw"
               style={{
                 maxWidth: '90vw',
                 maxHeight: '85vh',
+                width: 'auto',
+                height: 'auto',
                 objectFit: 'contain',
                 display: 'block',
                 userSelect: 'none',
